@@ -23,27 +23,35 @@ Blue = lenna_Blue.flatten()
 
 
 #Red Histogram
-Red_Hist = np.histogram(Red)
+Red_Hist, Red_Bins = np.histogram(Red)
 
 #Green Histogram
-Green_Hist = np.histogram(Green)
+Green_Hist, Green_Bins = np.histogram(Green)
 
 #Blue Histogram
-Blue_Hist = np.histogram(Blue)
+Blue_Hist, Blue_Bins = np.histogram(Blue)
 
 plt.subplot(1,3,1)
 plt.title('Red Histogram')
-plt.hist(Red_Hist, bins=64)
+plt.plot(Red_Hist)
 
 plt.subplot(1,3,2)
 plt.title('Green Histogram')
-plt.hist(Green_Hist, bins=64)
+plt.plot(Green_Hist)
 
 plt.subplot(1,3,3)
 plt.title('Blue Histogram')
-plt.hist(Blue_Hist, bins=64)
+plt.plot(Blue_Hist)
 
 plt.show()
+
+
+
+intensity = np.sqrt(Red_Hist*Red_Hist + Blue_Hist*Blue_Hist + Green_Hist*Green_Hist)
+
+plt.plot(intensity)
+plt.show()
+
 
 #Code needed to be included otherwise cv2 won't show the image
 cv2.waitKey(0)
